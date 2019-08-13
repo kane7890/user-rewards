@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
   def index
 
-    if session[:user_id]
-      @loginname=User.find(session[:user_id]).name
-    end
+
     @users=User.all
   end
   def show
