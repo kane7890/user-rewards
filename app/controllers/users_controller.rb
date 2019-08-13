@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   def index
+
+    if session[:user_id]
+      @loginname=User.find(session[:user_id]).name
+    end
     @users=User.all
   end
   def show
@@ -39,7 +43,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation)
+    params.require(:user).permit(:name, :password, :password_confirmation, :city, :state)
   end
 
 end

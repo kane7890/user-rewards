@@ -1,7 +1,9 @@
 <%#= render 'form', user: @user %>
 <%= form_for :user, url: '/users' do |f| %>
-  Username: <%= f.text_field :name %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
+  Username: <%= f.text_field :name %><br>
+  City: <%= f.text_field :city %><br>
+  State: <%= f.text_field :state %> <br>
+  Password: <%= f.password_field :password %><br>
+  Password Confirmation: <%= f.password_field :password_confirmation %><br>
   <%= f.submit "Submit" %>
 <% end %>

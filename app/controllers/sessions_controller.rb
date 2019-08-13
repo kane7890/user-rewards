@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    byebug
+    
     @user = User.find_by(name: params[:name])
   #  binding.pry
     if @user == "" or @user == nil
@@ -23,6 +23,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    redirect_to sessions_new_path
+    redirect_to new_session_path
   end
 end
