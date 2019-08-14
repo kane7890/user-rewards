@@ -3,10 +3,12 @@
 <ul>
   <li>Name:<%=@user.name%></li>
   <li>City:<%=@user.city%></li>
-  <li>state:<%=@user.state%></li>
-  <li>Points:<%@user.points%></li>
+  <li>State:<%=@user.state%></li>
+  <li>Points:<%=@user.points%></li>
 </ul>
 
-<h2>Points Purchases:</h2>
+<ul><% @user.purchases.each do |purchase| %>
+  <li><%=purchase.store.name%></li>
+  <% end %>
+</ul>
 <p><%=link_to "Go to Store List", stores_path%>
-  

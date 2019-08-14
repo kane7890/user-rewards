@@ -7,18 +7,22 @@ class StoresController < ApplicationController
     # @store=Store.find(params[:id])
     @store = Store.find(params[:id]) rescue nil
 
-
+    # byebug
     if session[:user_id] != nil
+
       @user = User.find(session[:user_id])
-      end
+
       # @admin = @user.admin
       # @attraction = Attraction.find(params[:id])
-
-        if !@store && params[:user_id]
+      # byebug
+        if !@store && params[:id]
         @user=Artist.find(params[:user_id])
         flash[:alert]="Store not found."
         redirect_to user_stores_path(@user)
-      end
+        end
+    else
+      redirect_to root_url
+    end
   end
 
   def new

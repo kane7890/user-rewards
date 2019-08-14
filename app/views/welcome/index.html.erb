@@ -1,0 +1,14 @@
+<h1>Welcome#index to the Store Rewards System</h1>
+<% if session[:user_id] %>
+<% @user=User.find(session[:user_id])%>
+<% @loginname = @user.name %>
+
+<h3>Logged in as: <%=@loginname%></h3><br>
+<h3><%=link_to "Go to User Page", user_path(@user)%></h3><br>
+
+<h3><%=link_to "Logout", logout_path%></h3>
+<% else %>
+  <p><%=link_to "Sign Up", new_user_path %></p>
+  <p><%=link_to "Login", new_session_path %></p>
+
+<% end %>

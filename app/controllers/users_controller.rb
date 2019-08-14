@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   def index
-
-
     @users=User.all
   end
   def show
@@ -36,7 +34,21 @@ class UsersController < ApplicationController
   end
   def update
 
-  end
+      if session[:user_id] != nil # byebug
+        @user = User.find(params[:id])
+          @store=Store.find(params[:store_id])
+
+          purch=Purchase.create(user_id: @user.id, store_id: @store.id)
+
+          @message=purch.makebuy
+          #  byebug
+          @user=User.find(params[:id])
+        #byebug
+        render :show
+      else
+        redirect_to root_url
+      end
+    end
 
   private
 

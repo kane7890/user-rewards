@@ -11,11 +11,7 @@
 
   <body>
     <%= yield %>
-    <% if session[:user_id] %>
-    <% @loginname=User.find(session[:user_id]).name%>
-    <%  end %>
-    <h3>Logged in as: <%=@loginname%></h3><br>
-    <h3><%=link_to "Logout", logout_path%></h3>
+
     <h3><a href="/">Home</a></h3>
     <br>
 

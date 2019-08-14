@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'welcome/index'
   resources :genres
   resources :purchases
   resources :stores
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: 'users#index'
+  root to: 'welcome#index'
   #  get 'sessions/new'
   resources :sessions, only: [:new, :create]
 
