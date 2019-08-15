@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
   resources :genres
-  resources :purchases
+  resources :purchases, only: [:new, :create, :index]
   resources :stores
   resources :users do
     resources :stores, only: [:show]

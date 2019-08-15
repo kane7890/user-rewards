@@ -37,14 +37,14 @@ class UsersController < ApplicationController
       if session[:user_id] != nil # byebug
         @user = User.find(params[:id])
           @store=Store.find(params[:store_id])
-
-          purch=Purchase.create(user_id: @user.id, store_id: @store.id)
-
-          @message=purch.makebuy
-          #  byebug
-          @user=User.find(params[:id])
-        #byebug
-        render :show
+          @item=params[:item]
+          #  purch=Purchase.create(user_id: @user.id, store_id: @store.id, item: @item)
+          #
+          #  @message=purch.makebuy
+          # # #  byebug
+                  #byebug
+        session[:store_id]=@store.id
+        redirect_to new_purchase_path
       else
         redirect_to root_url
       end

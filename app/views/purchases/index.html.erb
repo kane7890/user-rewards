@@ -1,0 +1,5 @@
+<ul>
+<% @purchases.each do |purchase| %>
+<li><%="#{purchase.id} #{purchase.user.name} #{purchase.store.name} #{purchase.item}"%></li>
+<% end %>
+</ul>

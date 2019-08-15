@@ -1,0 +1,9 @@
+<h2>Purchase:</h2>
+<h3>User: <%=@user.name%></h3>
+<h3>Store: <%=@store.name%></h3>
+<%= form_tag({controller: 'purchases', action: 'create', method: 'post'}) do %>
+  <div><%= hidden_field_tag "purchase[store_id]", @store.id%>
+  <div><%= hidden_field_tag "purchase[user_id]", @user.id%>
+  <div><%= text_field_tag "purchase[item]"%>
+  <div><%= submit_tag "Purchase from this store" %></div>
+<% end %>

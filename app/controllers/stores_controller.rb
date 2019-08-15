@@ -16,7 +16,7 @@ class StoresController < ApplicationController
       # @attraction = Attraction.find(params[:id])
       # byebug
         if !@store && params[:id]
-        @user=Artist.find(params[:user_id])
+        @user=User.find(params[:user_id])
         flash[:alert]="Store not found."
         redirect_to user_stores_path(@user)
         end
