@@ -5,5 +5,6 @@ class User < ApplicationRecord
   has_many :genres, through: :stores
 
   validates :name, presence: true
+  validates :name, uniqueness: true
 
 end

@@ -12,21 +12,25 @@ class UsersController < ApplicationController
 
   def create
   #    binding.pry
-      @user= User.create(user_params)
+      @user= User.new(user_params)
+      if @user.valid?
       #binding.pry
-      if @user == "" or @user.id == nil
-        redirect_to new_user_path, alert: "passwords don't match"
-      else
-    # binding.pry
+    #  if @user == "" or @user.id == nil
+
       session[:user_id] = @user.id
       @user.points = 0
       @user.save
+          redirect_to user_path(@user)
+    else
+        render :new
+    # binding.pry
+
   # username=params[:name]
 
   # else
   #   session[:name]=username
   #   binding.pry
-    redirect_to user_path(@user.id)
+
     end
 
 

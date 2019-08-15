@@ -1,4 +1,24 @@
 <%#= render 'form', user: @user %>
+<% byebug %>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@user.errors.count, "error") %>
+        prohibited this user from being saved:
+    </h2>
+    <ul>
+
+      <% @user.errors.full_messages.each do |msg| %>
+      <li> <%= msg %> </li>
+      <% end %>
+      </ul>
+      </div>
+  <% end %>
+
+<!-- <div class="field_with_errors">
+  <input type="text" name="user[name]" id="user_name" value="Existing User Name" />
+  </div> -->
+
 <%= form_for :user, url: '/users' do |f| %>
   Username: <%= f.text_field :name %><br>
   City: <%= f.text_field :city %><br>
