@@ -19,6 +19,8 @@ class UsersController < ApplicationController
       else
     # binding.pry
       session[:user_id] = @user.id
+      @user.points = 0
+      @user.save
   # username=params[:name]
 
   # else
