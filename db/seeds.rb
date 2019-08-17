@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-ken=User.create(name: "Kenneth", points: 20, city: "Newark", state: "NJ", password: "NJIT", password_confirmation "NJIT")
+# ken=User.create(name: "Kenneth", points: 20, city: "Newark", state: "NJ", password: "NJIT", password_confirmation "NJIT")
 emmie=User.create(name: "Emmie", points: 10, city: "Kingston", state: "NY")
 brian=User.create(name: "Brian", points: 2, city: "Jersey City", state: "NJ")
 monica=User.create(name: "Monica", points: 7, city: "Philadelphia", state: "PA")

@@ -7,3 +7,9 @@
      <%= ingredient.text_field :quantity%><br>
 
     <% end %>
+
+
+    <%=form_for :genre do |f| %>
+     <%=f.collection_select :genre_id, Genre.all, :id, :name %>
+     <%= f.submit %>
+     <% end %>

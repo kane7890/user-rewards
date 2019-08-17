@@ -5,6 +5,11 @@ class GenresController < ApplicationController
 
   def show
     @genre=Genre.find(params[:id])
-    byebug
+  end
+
+  def new
+  end
+
+  def create
   end
 end

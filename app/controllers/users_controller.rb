@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
   def show
     @user=User.find(params[:id])
+    @genre=Genre.new
   end
 
   def new
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
   #    binding.pry
       @user= User.new(user_params)
       if @user.valid?
-      #binding.pry
+
     #  if @user == "" or @user.id == nil
 
       session[:user_id] = @user.id
