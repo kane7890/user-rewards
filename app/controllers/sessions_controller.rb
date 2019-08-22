@@ -1,18 +1,36 @@
 
 class SessionsController < ApplicationController
+  # CLIENT_ID= ENV['GH_BASIC_CLIENT_ID']
+  # CLIENT_SECRET=ENV['GH_BASIC_SECRET_ID']
 
   def new
+
+    @user=User.new
   end
 
   def create
 
     @user = User.find_by(name: params[:name])
-  #  binding.pry
+    byebug
     if @user == "" or @user == nil
-      redirect_to new_session_path, alert: "no such user"
+      if auth == nil
+        redirect_to new_session_path, alert: "no such user"
+      else
+        @user = User.find_or_create_by(uid: auth['uid']) do |u|
+        # byebug
+        u.name = auth['info']['name']
+        u.email = auth['info']['email']
+        u.image = auth['info']['image']
+        u.password = "password"
+        end
+
+
+
+
+      session[:user_id] = @user.id
+      redirect_to user_path(@user.id)
+      end
     else
-      # binding.pry
-    #  return head(:forbidden) unless
 
       if @user.authenticate(params[:password])
       # binding.pry
@@ -20,15 +38,32 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to user_path(@user.id)
       else
-        
+      #  byebug
+        @user.errors.add(:base, "Incorrect user or password")
+
+        redirect_to new_session_path, alert: "no such user"
       end
     end
-    # end
+
+
+
+    # session[:user_id] = @user.id
+
+
   end
+
+
+    # end
 
 
   def destroy
     session.clear
     redirect_to new_session_path
+  end
+
+  private
+
+  def auth
+    request.env['omniauth.auth']
   end
 end

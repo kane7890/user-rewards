@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   resources :purchases, only: [:new, :create, :index]
   resources :stores
   resources :users do
-    resources :stores, only: [:show]
+    resources :purchases, only: [:index]
   end
+
+
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'welcome#index'
@@ -19,6 +22,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+  get '/auth/facebook/callback' => 'sessions#create'
   # get '/show' => 'secrets#show'
 
 

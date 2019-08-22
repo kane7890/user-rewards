@@ -1,4 +1,7 @@
 <h1>Welcome#index to the Store Rewards System</h1>
+
+
+
 <% if session[:user_id] %>
 <% @user=User.find(session[:user_id])%>
 <% @loginname = @user.name %>
@@ -10,5 +13,6 @@
 <% else %>
   <p><%=link_to "Sign Up", new_user_path %></p>
   <p><%=link_to "Login", new_session_path %></p>
+  <p><%= link_to 'Log in with Facebook!', "/auth/facebook" %></p>
 
 <% end %>

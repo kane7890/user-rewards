@@ -1,14 +1,11 @@
 <h2>User:</h2>
 
 <ul>
-  <li>Name:<%=@user.name%></li>
-  <li>City:<%=@user.city%></li>
-  <li>State:<%=@user.state%></li>
-  <li>Points:<%=@user.points%></li>
+  <li>Name: <%=@user.name%></li>
+  <li>City: <%=@user.city%></li>
+  <li>State: <%=@user.state%></li>
+  <li>Points: <%=@user.points%></li>
 </ul>
+<p><%=link_to "Go to Purchase List", user_purchases_path(@user)%>
 
-<ul><% @user.purchases.each do |purchase| %>
-  <li><%=purchase.store.name%>, <%=purchase.item%></li>
-  <% end %>
-</ul>
 <p><%=link_to "Go to Genre List", genres_path%>

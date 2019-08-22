@@ -1,7 +1,13 @@
 class PurchasesController < ApplicationController
 
   def index
-    @purchases = Purchase.all
+    if params[:user_id]
+      @user=User.find (params[:user_id])
+      @purchases = @user.purchases
+    else
+      @purchases = Purchase.all
+    end
+
   end
 
 
