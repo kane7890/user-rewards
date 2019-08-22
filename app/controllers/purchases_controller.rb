@@ -26,7 +26,7 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.create(purchase_params)
     @user= User.find(@purchase.user_id)
     @store=Store.find(@purchase.store_id)
-    @user.points += @store.point_value
+    @user.points = @user.points + @store.point_value
     @user.save
     #byebug
     redirect_to user_path(@user)

@@ -21,7 +21,8 @@ class SessionsController < ApplicationController
         u.name = auth['info']['name']
         u.email = auth['info']['email']
         u.image = auth['info']['image']
-        u.password = "password"
+        u.points = 0
+        u.password = "passw0rd"
         end
 
 

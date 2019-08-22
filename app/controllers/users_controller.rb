@@ -5,6 +5,11 @@ class UsersController < ApplicationController
   def show
     @user=User.find(params[:id])
     @genre=Genre.new
+    if @user.points > 20
+      @couponflag = true
+    else
+      @couponflag = false
+    end
   end
 
   def new
@@ -40,8 +45,13 @@ class UsersController < ApplicationController
 
   end
   def update
-
-      if session[:user_id] != nil # byebug
+    #  byebug
+      if params[:commit] == "Get Coupon"
+        @user = User.find(params[:id])
+        @user.points = 0
+        params[:commit] = ""
+        render :show
+      elsif session[:user_id] != nil # byebug
         @user = User.find(params[:id])
           @store=Store.find(params[:store_id])
           @item=params[:item]
