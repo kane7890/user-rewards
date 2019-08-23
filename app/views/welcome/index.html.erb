@@ -1,16 +1,21 @@
+<!--root home page -->
 <h1>Welcome to the User Rewards System</h1>
 
+<!--if user is logged in, get information on that user -->
 <% if session[:user_id] %>
 <% @user=User.find(session[:user_id])%>
 <% @loginname = @user.name %>
 
+  <!--display the user information with link to the user's page -->
   <h3>Logged in as: <%=@loginname%></h3><br>
   <h3><%=link_to "Go to User Page", user_path(@user)%></h3><br>
-
+  <!--display a logout link if the user is logged in -->
 <h3><%=link_to "Logout", logout_path%></h3>
 <% else %>
+  <!-- if the user is not logged in, give options of signing up for an account or logging in -->>
   <p><%=link_to "Sign Up", new_user_path %></p>
   <p><%=link_to "Login", new_session_path %></p>
-  <p><%= link_to 'Log in with Facebook!', "/auth/facebook" %></p>
+  <!--option for logging in through Facebook-->
+  <p><%= link_to 'Log in with Facebook', "/auth/facebook" %></p>
 
 <% end %>

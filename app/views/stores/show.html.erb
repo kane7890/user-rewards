@@ -1,10 +1,11 @@
+<!--display store information and points generated from the store -->
 <h2>Store Name: <%=@store.name%></h2>
 <p>City: <%=@store.city%></p>
 <p>State: <%=@store.state%></p>
 <p>Point Value: <%=@store.point_value%></p>
 
-
-
+<!--submit button for routing user back to the user controller (with store_id data)-->
+<!--hidden field used to pass store_id to params[user] hash -->
 <%= form_tag user_path(@user), :method=>:patch do %>
   <div><%= hidden_field_tag "store_id", @store.id%>
   <div><%#= text_field_tag "item"%></div>

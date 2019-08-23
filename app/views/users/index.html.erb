@@ -1,5 +1,8 @@
+<!--List all users -->
+
 <h2>Users: </h2>
 <ul><%@users.each do |user| %>
+<!--link to each user's individual (show) page -->
 <li><%=link_to user.name, user_path(user)%></li>
 <% end %>
 </ul>

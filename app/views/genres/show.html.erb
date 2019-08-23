@@ -1,6 +1,8 @@
+<!-- list all stores in a gnere and allow users to select -->
 <h2> Store Genre: <%=@genre.name%></h2>
 <h3> Please select a store </h3>
 
+<!-- list all stores in a given genre -->
 <% (@genre.stores).each do |store| %>
   <%=link_to store.name, store_path(store)%> <br>
   <% end %>

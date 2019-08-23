@@ -1,8 +1,9 @@
+<!--form for entering information about store -->
 <%= form_for @store do |f| %>
   Name: <%= f.text_field :name %><br>
   City: <%= f.text_field :city%><br>
   State: <%= f.text_field :state %><br>
-  Point Value for Store: <%=f.number_field :point_value%><br> 
+  Point Value for Store: <%=f.number_field :point_value%><br>
 
     <%=f.submit %>
 <% end %>

@@ -1,20 +1,23 @@
-<h2>User:</h2>
 
+<h2>User:</h2>
+<!--Show key attributes for each user -->
 <ul>
   <li>Name: <%=@user.name%></li>
   <li>City: <%=@user.city%></li>
   <li>State: <%=@user.state%></li>
   <li>Points: <%=@user.points%></li>
-  <li>Coupon Eligible: <%=@couponflag%></li>
+  <li>Eligible: <%=@couponflag%></li>
 </ul>
+<!--if the user is eligible to spend 20 points -->
 <% if @couponflag %>
   <p><%= form_tag(user_path(@user), method: "patch") do %>
-    <%=submit_tag 'Get Coupon' %>
+    <%=submit_tag 'Spend 20 Points' %>
       <% end %>
 <% end %>
 
-
+<!--link to store list to make purchase -->
 <p><%=link_to "Go to Store List to Make a Purchase", stores_path%></p>
-<p><%=link_to "Go to List of Existing Purchases", user_purchases_path(@user)%>
-
-<p><%=link_to "Go to Genre List", genres_path%>
+<!--link to genre list to make purchase -->
+<p><%=link_to "Go to Genre List to Make a Purchase", genres_path%></p>
+<!--List the point-earning purchases for the user -->
+<p><%=link_to "List Point-Earning Purchases For User", user_purchases_path(@user)%></p>

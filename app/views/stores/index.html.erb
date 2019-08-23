@@ -1,4 +1,7 @@
+
 <h2>Stores:</h2>
+
+<!--list all stores (that are passed to this template/view)-->
 
 <%@stores.each do |store| %>
   <%= link_to store.name, store_path(store)%> <br>
