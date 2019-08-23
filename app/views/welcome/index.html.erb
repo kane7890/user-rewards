@@ -12,7 +12,7 @@
   <!--display a logout link if the user is logged in -->
 <h3><%=link_to "Logout", logout_path%></h3>
 <% else %>
-  <!-- if the user is not logged in, give options of signing up for an account or logging in -->>
+  <!-- if the user is not logged in, give options of signing up for an account or logging in-->
   <p><%=link_to "Sign Up", new_user_path %></p>
   <p><%=link_to "Login", new_session_path %></p>
   <!--option for logging in through Facebook-->

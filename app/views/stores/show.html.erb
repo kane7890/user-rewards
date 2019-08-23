@@ -6,8 +6,4 @@
 
 <!--submit button for routing user back to the user controller (with store_id data)-->
 <!--hidden field used to pass store_id to params[user] hash -->
-<%= form_tag user_path(@user), :method=>:patch do %>
-  <div><%= hidden_field_tag "store_id", @store.id%>
-  <div><%#= text_field_tag "item"%></div>
-  <div><%= submit_tag "Purchase from this store" %></div>
-  <% end %>
+<%= link_to "Purchase from this store", new_store_purchase_path(@store) %>

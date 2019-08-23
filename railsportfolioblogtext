@@ -1,0 +1,13 @@
+# Rails, RESTful Routing and Keeping Stuff Straight
+
+While working on this Rails Portfolio Project, I found it challenging to keep straight the different routes, controllers and views.   In Rails, the application developer can fairly simply tell the server to create routes, which are similar to map instructions telling where the server to go when navigating a web page.  These routes are implemented as "actions" and each action is further specified using a Ruby method in a Ruby controller files.  More complex servers could have multiple controllers. So when a user navigates to a Rails server, the server could be enabled to perform the following interactions with an underlying database or databases (via ActiveRecord):
+
+*  creating a new instance (ActiveRecord effectively uses an instance to interact with a row of a database) through a web interface, editing that instance/row,  (new, create actions)
+*  editing that instance/row (edit/update actions)
+*  displaying that instance/row (show action)
+*  displaying all instance/rows (index action)
+*  destroying/deleting that row (delete action)
+
+in Rails, by default, every action will have a "view".  The combination of views is essentially the web pages that the user of the application sees and interacts with, usually with a web browser.  Rails provides a fairly simple way to implement these views using embedded Ruby (.erb) code or a combination of HTML and embedded Ruby code.   Not all actions will need a view...typically one does not use a create view AFTER going to the create action of a controller, though it can be done and may be useful in some applications.
+
+Note that there are some of the actions are "paired"--.e.g new and create, edit and update.   That is because the controllers provide Ruby methods (and the programming logic0 but do not interact in a user interface with the user, while the views do.  So the code is written so that the application will first go to the new controller action, then go to a new view (embedded Ruby) to

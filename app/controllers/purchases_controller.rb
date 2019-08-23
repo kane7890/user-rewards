@@ -20,7 +20,8 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.new
     # set user_id and store_id for the Purchase object
     @purchase.user_id=session[:user_id]
-    @purchase.store_id=session[:store_id]
+  #  byebug
+    @purchase.store_id=params[:store_id]
     # find @user and @store instances that correspond to user_id and store_id
     @user=User.find(@purchase.user_id)
     @store=Store.find(@purchase.store_id)
@@ -28,13 +29,19 @@ class PurchasesController < ApplicationController
   end
 
   def create
+    # byebug
     # create a Purchase instance based on parameters from route
     @purchase = Purchase.create(purchase_params)
     # set user and @store for the Purchase object
     @user= User.find(@purchase.user_id)
     @store=Store.find(@purchase.store_id)
     # add the point value from the store to the @user
-    @user.points = @user.points + @store.point_value
+    if !params[:couponflag]
+      @user.points = @user.points + @store.point_value
+    else
+      @user.points -= 20
+    end
+
     # save / persist the @user with the new point total
     @user.save
     #byebug

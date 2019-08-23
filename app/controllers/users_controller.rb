@@ -58,33 +58,6 @@ class UsersController < ApplicationController
 
   end
 
-  def update
-    #  byebug
-      # if the controller was touting the user from Get Coupon button, decrease the points by 20, re-render show
-      if params[:commit] =="Spend 20 Points"
-        @user = User.find(params[:id])
-        @user.points = @user.points - 20
-        params[:commit] = ""
-        render :show
-      elsif session[:user_id] != nil # byebug
-        # if the controller was routing the user from the store page...get store information from params
-          @user = User.find(params[:id])
-          @store=Store.find(params[:store_id])
-          @item=params[:item]
-          #  purch=Purchase.create(user_id: @user.id, store_id: @store.id, item: @item)
-          #
-          #  @message=purch.makebuy
-          # # #  byebug
-                  #byebug
-          # set store_id info in session in order to pass the store_id to the route for a new purchase
-          session[:store_id]=@store.id
-          # redirect to route for new purchase
-          redirect_to new_purchase_path
-      else
-        # if there is nothing to update redirect to root_url
-        redirect_to root_url
-      end
-    end
 
   private
   # private method for requiring the :user key and permitting other sub-keys for params hash

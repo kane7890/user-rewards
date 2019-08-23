@@ -1,10 +1,18 @@
-<!--Form for getting data for a purchase -->
+<!--View for makinga purchase -->
+
 <h2>Purchase:</h2>
+<!--List user and store names-->
 <h3>User: <%=@user.name%></h3>
 <h3>Store: <%=@store.name%></h3>
+<!--Form for making purchase, using hidden fields to transmit purchase item, store_id, user_id -->
 <%= form_tag({controller: 'purchases', action: 'create', method: 'post'}) do %>
   <div><%= hidden_field_tag "purchase[store_id]", @store.id%>
   <div><%= hidden_field_tag "purchase[user_id]", @user.id%>
+  <div><% if @user.points > 20 %>
+      <%= label_tag "Use Points?"%>
+      <%= check_box "couponflag", true %>
+    <% end %>
   <div><%= text_field_tag "purchase[item]"%>
+
   <div><%= submit_tag "Purchase from this store" %></div>
 <% end %>

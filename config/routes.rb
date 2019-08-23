@@ -1,13 +1,24 @@
 Rails.application.routes.draw do
 
+  # route for home page
   get 'welcome/index'
+  # resources routes
   resources :genres
   resources :purchases, only: [:new, :create, :index]
-  resources :stores
-  resources :users, only: [:new, :create, :show, :index, :update] do
-    resources :purchases, only: [:index]
+  resources :stores do
+    resources :purchases, only: [:new]
   end
 
+  # nested routes
+  resources :users, only: [:new, :create, :show, :index, :update] do
+    resources :purchases, only: [:index, :new]
+  end
+
+  # KK originally implemented nested routes
+  # resources :users, only: [:new, :create, :show, :index, :update] do
+  #
+  #   resources :purchases, only: [:index, :new]
+  # end
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

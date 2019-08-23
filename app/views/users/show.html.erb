@@ -10,9 +10,7 @@
 </ul>
 <!--if the user is eligible to spend 20 points -->
 <% if @couponflag %>
-  <p><%= form_tag(user_path(@user), method: "patch") do %>
-    <%=submit_tag 'Spend 20 Points' %>
-      <% end %>
+    <h3>YOU HAVE A FREE PURCHASE</h3>
 <% end %>
 
 <!--link to store list to make purchase -->
